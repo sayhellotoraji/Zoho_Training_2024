@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Login</h2>
+    <form id="loginForm" action="profile.html" onsubmit="return validateForm()">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <input type="submit" value="Login">
+    </form>
+
+    <script>
+        function validateForm() {
+            var email = document.getElementById("email").value.trim();
+            var password = document.getElementById("password").value;
+
+            var error = "";
+
+            // Validate email
+            if (email === "") {
+                error += "Email cannot be empty\n";
+            } else {
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    error += "Invalid email format\n";
+                }
+            }
+
+            // Validate password
+            if (password === "") {
+                error += "Password cannot be empty\n";
+            }
+
+            // Display error message if any
+            if (error !== "") {
+                alert(error);
+                return false; // Prevent form submission
+            }
+
+            return true; // Proceed with form submission
+        }
+    </script>
+</body>
+</html>

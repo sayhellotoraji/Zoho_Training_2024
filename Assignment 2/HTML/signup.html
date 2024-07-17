@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Signup</h2>
+    <form id="signupForm" action="login.html" onsubmit="return validateForm()">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="confirm_password">Confirm Password:</label><br>
+        <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+
+        <input type="submit" value="Signup">
+    </form>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var password = document.getElementById("password").value;
+            var confirm_password = document.getElementById("confirm_password").value;
+
+            var error = "";
+
+            // Validate name
+            if (name === "") {
+                error += "Name cannot be empty\n";
+            }
+
+            // Validate email
+            if (email === "") {
+                error += "Email cannot be empty\n";
+            } else {
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    error += "Invalid email format\n";
+                }
+            }
+
+            // Validate password
+            if (password === "") {
+                error += "Password cannot be empty\n";
+            }
+
+            // Validate confirm password
+            if (confirm_password === "") {
+                error += "Confirm Password cannot be empty\n";
+            } else if (password !== confirm_password) {
+                error += "Passwords do not match\n";
+            }
+
+            // Display error message if any
+            if (error !== "") {
+                alert(error);
+                return false; // Prevent form submission
+            }
+
+            return true; // Proceed with form submission
+        }
+    </script>
+</body>
+</html>
