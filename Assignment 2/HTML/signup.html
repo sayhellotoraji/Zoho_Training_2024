@@ -14,10 +14,10 @@
     <h2>Signup</h2>
     <form id="signupForm" action="login.html" onsubmit="return validateForm()">
         <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
+        <input type="text" id="name" name="name" ><br><br>
 
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+        <input type="email" id="email" name="email" ><br><br>
 
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password" required><br><br>
@@ -37,12 +37,12 @@
 
             var error = "";
 
-            // Validate name
+            //  name check
             if (name === "") {
                 error += "Name cannot be empty\n";
             }
 
-            // Validate email
+            //  email
             if (email === "") {
                 error += "Email cannot be empty\n";
             } else {
@@ -52,25 +52,25 @@
                 }
             }
 
-            // Validate password
+            //  password
             if (password === "") {
                 error += "Password cannot be empty\n";
             }
 
-            // Validate confirm password
+            //  confirm password
             if (confirm_password === "") {
                 error += "Confirm Password cannot be empty\n";
             } else if (password !== confirm_password) {
                 error += "Passwords do not match\n";
             }
 
-            // Display error message if any
+            // error msg
             if (error !== "") {
                 alert(error);
-                return false; // Prevent form submission
+                return false; 
             }
 
-            return true; // Proceed with form submission
+            return true; 
         }
     </script>
 </body>

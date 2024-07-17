@@ -6,9 +6,13 @@
     <title>Profile</title>
 </head>
 <body>
+    <a href="login.html" id="logoutBtn">Logout</a>
     <h2>Welcome to Your Profile</h2>
+    <div id="profileInfo">
+        <!-- User data will be displayed here -->
+    </div>
     <p>Update Your Additional Details:</p>
-    <form action="profile.html">
+    <form id="updateForm" onsubmit="return updateDetails()">
         <label for="age">Age:</label><br>
         <input type="number" id="age" name="age"><br><br>
 
@@ -24,6 +28,82 @@
         <input type="submit" value="Update Details">
     </form>
     <br>
-    <a href="login.html">Logout</a>
+
+
+    <script>
+        // Simulated user session data
+        var loggedInUser = {
+            name: "John Doe",
+            email: "john.doe@example.com",
+            age: 30,
+            gender: "Male",
+            dob: "1994-05-15",
+            mobile: "1234567890"
+        };
+
+        // Function to display user data on the profile page
+        function displayUserData() {
+            var profileInfo = document.getElementById("profileInfo");
+            profileInfo.innerHTML = `
+                <p>Name: ${loggedInUser.name}</p>
+                <p>Email: ${loggedInUser.email}</p>
+                <p>Age: ${loggedInUser.age}</p>
+                <p>Gender: ${loggedInUser.gender}</p>
+                <p>Date of Birth: ${loggedInUser.dob}</p>
+                <p>Mobile: ${loggedInUser.mobile}</p>
+            `;
+        }
+
+        // Function to update user details (simulated for demonstration)
+        function updateDetails() {
+            var ageInput = document.getElementById("age").value;
+            var genderInput = document.getElementById("gender").value;
+            var dobInput = document.getElementById("dob").value;
+            var mobileInput = document.getElementById("mobile").value;
+
+            // Check if any fields have changed
+            var hasChanged = false;
+
+            if (ageInput !== "" && ageInput !== loggedInUser.age.toString()) {
+                loggedInUser.age = ageInput;
+                hasChanged = true;
+            }
+
+            if (genderInput !== "" && genderInput !== loggedInUser.gender) {
+                loggedInUser.gender = genderInput;
+                hasChanged = true;
+            }
+
+            if (dobInput !== "" && dobInput !== loggedInUser.dob) {
+                loggedInUser.dob = dobInput;
+                hasChanged = true;
+            }
+
+            if (mobileInput !== "" && mobileInput !== loggedInUser.mobile) {
+                loggedInUser.mobile = mobileInput;
+                hasChanged = true;
+            }
+
+            // Display updated user data if changes were made
+            if (hasChanged) {
+                displayUserData();
+                alert("Details updated successfully!");
+            } else {
+                alert("No changes made.");
+            }
+
+            return false; // Prevent form submission
+        }
+
+        // Function to handle logout (simulated for demonstration)
+        var logoutBtn = document.getElementById("logoutBtn");
+        logoutBtn.addEventListener("click", function() {
+            alert("Logged out successfully!");
+            // Perform logout actions here (e.g., clearing session, redirecting to login page)
+        });
+
+        // Initial display of user data when page loads
+        displayUserData();
+    </script>
 </body>
 </html>
