@@ -57,7 +57,7 @@ class LinkedList2 {
     }
 }
 
-public class ReverseLinkedList2 {
+public class ReverseLinkedList {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
