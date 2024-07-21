@@ -2,25 +2,25 @@ package Day_5_DS_2;
 
 import java.util.Scanner;
 
-class ListNode {
+class ListNode1 {
     int val;
-    ListNode next;
+    ListNode1 next;
 
-    ListNode() {}
-    ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    ListNode1() {}
+    ListNode1(int val) { this.val = val; }
+    ListNode1(int val, ListNode1 next) { this.val = val; this.next = next; }
 }
 
-class LinkedList {
-    ListNode head;
+class LinkedList1 {
+    ListNode1 head;
 
     // Method to insert a new node at the end of the linked list
     public void insert(int data) {
-        ListNode newNode = new ListNode(data);
+        ListNode1 newNode = new ListNode1(data);
         if (head == null) {
             head = newNode;
         } else {
-            ListNode current = head;
+            ListNode1 current = head;
             while (current.next != null) {
                 current = current.next;
             }
@@ -29,11 +29,11 @@ class LinkedList {
     }
 
     // Method to remove the n-th node from the end of the linked list
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode dummy = new ListNode(0);
+    public ListNode1 removeNthFromEnd(ListNode1 head, int n) {
+        ListNode1 dummy = new ListNode1(0);
         dummy.next = head;
-        ListNode fast = dummy;
-        ListNode slow = dummy;
+        ListNode1 fast = dummy;
+        ListNode1 slow = dummy;
 
         // Move fast pointer n+1 steps ahead
         for (int i = 0; i <= n; i++) {
@@ -73,13 +73,13 @@ public class RemoveNthNode {
         int n = sc.nextInt();
 
         // Create linked list and insert elements
-        LinkedList l = new LinkedList();
+        LinkedList1 l = new LinkedList1();
         for (int x : input) {
             l.insert(x);
         }
 
         // Remove the n-th node from end and get updated head
-        ListNode current = l.removeNthFromEnd(l.head, n);
+        ListNode1 current = l.removeNthFromEnd(l.head, n);
 
         // Display the modified linked list
         while (current != null) {
